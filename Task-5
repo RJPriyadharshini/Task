@@ -1,0 +1,234 @@
+# QUESTION - 1
+
+write a python program to calculate the total number of vowels and count of each individual vowel A, E, I, O, U in the string
+"Guvi geeks network private limited"
+
+# Input string
+input_string = "guvi geeks network private limited"
+
+# Convert the input string to lowercase to handle both uppercase and lowercase vowels
+input_string = input_string.lower()
+
+# Initialize variables to count individual vowels
+count_a = 0
+count_e = 0
+count_i = 0
+count_o = 0
+count_u = 0
+
+# Iterate through the characters in the string
+for char in input_string:
+    if char == 'a':
+        count_a += 1
+    elif char == 'e':
+        count_e += 1
+    elif char == 'i':
+        count_i += 1
+    elif char == 'o':
+        count_o += 1
+    elif char == 'u':
+        count_u += 1
+
+# Calculate the total number of vowels
+total_vowels = count_a + count_e + count_i + count_o + count_u
+
+# Print the counts
+print("Total number of vowels:", total_vowels)
+print("Count of 'a':", count_a)
+print("Count of 'e':", count_e)
+print("Count of 'i':", count_i)
+print("Count of 'o':", count_o)
+print("Count of 'u':", count_u)
+
+"""OUTPUT
+
+Total number of vowels: 12
+Count of 'a': 1
+Count of 'e': 5
+Count of 'i': 4
+Count of 'o': 1
+Count of 'u': 1
+
+"""
+
+# QUESTION- 2
+
+create a pyramid of numbers from 1 to 20 using for loop
+
+# input:
+
+for i in range(1, 21):
+    print()
+    for j in range(1, i + 1):
+        print(j, end="")
+
+""" OUTPUT
+
+1
+12
+123
+1234
+12345
+123456
+1234567
+12345678
+123456789
+12345678910
+1234567891011
+123456789101112
+12345678910111213
+1234567891011121314
+123456789101112131415
+12345678910111213141516
+1234567891011121314151617
+123456789101112131415161718
+12345678910111213141516171819
+1234567891011121314151617181920
+"""
+
+# QUESTION-3
+write a function that takes a string and returns the number a new string with all the vowels removed
+
+def words(string):                         # create a function called words
+    vowels = set("aeiou")                  # set vowels
+    new_string = ""                        # create empty string
+    for char in string:                    # char == string
+        if char not in vowels:             # prydhrshn
+            new_string += char             # Add the char which are not presented in vowels
+    return new_string
+
+
+print(words("priyadharshini"))
+
+"""OUTPUT
+prydhrshn
+"""
+
+# QUESTION-4
+write a function that takes a string and returns the number of unique characters in it
+
+ 
+def characters(string):                          # create a function called characters
+    unique_characters = set()                    # empty set created because set does not allow duplicate values
+    for character in string:                     # character == string
+        unique_characters.add(character)         # add characters
+    return len(unique_characters)                # returns the length
+
+
+print(characters("priyadharshini"))
+
+"""OUTPUT
+9
+"""
+
+# QUESTION-5
+write a function that takes a string and returns true if it is pallindrome, false otherwise
+
+
+def palindrome(string):                             # Create a function called palindrome
+    string = string.lower().replace(" ", "")        # convert the string as lower case and remove gaps
+    reversed_string = string[::-1]                  # reverse ,it returns the value from backwards
+    return string == reversed_string
+
+
+print(palindrome("madam"))
+print(palindrome("god"))
+
+"""OUTPUT
+True
+False
+
+"""
+
+#   QUESTION-6
+
+Write a function that two strings and returns the longest common substring betweeen them
+
+
+def longest_common_substring(str1, str2):
+    max_length = 0
+    start_index = 0
+    for i in range(len(str1)):                  # 13 (geeksforgeeks)
+        for j in range(len(str2)):              # 10 (hackerrank)
+            length = 0
+            while i + length < len(str1) and j + length < len(str2) and str1[i + length] == str2[
+                j + length]:  # 14<14 and 8<8  and  str1[14]==str2[8]
+                length += 1
+            if length > max_length:
+                max_length = length
+                start_index = i
+    longest_substring = str1[start_index:start_index + max_length]
+    return longest_substring
+
+
+result = longest_common_substring("geeksforgeeks", "hackerrank")
+
+print("Longest common substring:", result)
+
+"""OUTPUT
+Longest common substring: e
+"""
+
+# QUESTION- 7
+
+write a function that takes a string and returns most frequent character in it
+
+
+def frequent_character(string):                         # create a fun called frequent_character
+    character_counts = {}                               # create empty dict
+    for character in string:
+        if character in character_counts:
+            character_counts[character] += 1            # if same char repeated add the count
+        else:
+            character_counts[character] = 1              # if not repeated take the count as 1
+    frequent_character = max(character_counts,
+                                  key=character_counts.get)  # by using max function it fetch max count from the string by using the key only it correctly fetch the max count
+
+    return frequent_character
+
+
+result = (frequent_character("geeksforgeeks"))
+print(f'frequent_character is {result}')
+
+""" OUTPUT
+most_frequent_character is e
+"""
+
+# QUESTION- 8
+Write a function that takes a string and return True if it an anagram of another string, False otherwise
+
+# anagram means we take one word like heart then change that as Earth .. It is anagram. by taking one meaningful word and change that to other meaningful word
+
+def is_anagram(str1, str2):
+    str1 = str1.lower()
+    str2 = str2.lower()
+    str1 = sorted(str1)  # sorted used to order in alphabetical order to easily identify whether it is anagram or not
+    str2 = sorted(str2)
+    return str1 == str2  # Compare the str1 and str2 
+
+print(is_anagram("listen", "silent"))
+
+"""OUTPUT
+True
+"""
+
+# QUESTION- 9
+write a function that takes a string and returns number of word in it
+
+def count_words(string):
+    words = string.split()  # by using split for eg "hello world" it returns 1 can changed as "hello" "world" it returns 2
+    return len(words)
+
+
+result1 = count_words("geeks for geeks")
+print(f'Words_count {result1}')
+result2 = count_words("leet code")
+print(f'Words_count {result2}')
+
+"""OUTPUT
+Words_count 3
+Words_count 2
+"""
+
+
+
