@@ -9,10 +9,12 @@ driver = webdriver.Chrome(service=chrome_service)
 driver.get("https://www.saucedemo.com/")
 time.sleep(10)
 
-# get the url of the web page
+# question-1 
+#get the url of the web page
 r=driver.current_url
 print(r)
 
+#question-2
 #get the title of the web page
 a=driver.title
 print(a)
@@ -23,7 +25,8 @@ driver.find_element(By.ID,"password").send_keys("secret_sauce")
 driver.find_element(By.ID,"login-button").click()
 
 
-# Storing the page source in page variable
+#question-3 
+#Storing the page source in page variable
 page = driver.page_source.encode('utf-8')
 # print(page)
 
