@@ -9,32 +9,35 @@ driver = webdriver.Chrome(service=chrome_service)
 driver.get("https://www.saucedemo.com/")
 time.sleep(10)
 
-# question-1 
-#get the url of the web page
-r=driver.current_url
-print(r)
+# Question-1
+# Get the url of the web page
+url=driver.current_url
+print(f"Current url of the page:{url}")
 
-#question-2
-#get the title of the web page
-a=driver.title
-print(a)
-# find the element using id and enter the values using send keys
+# Question-2
+# Get the title of the web page
+tit=driver.title
+print(f"Current title of the page:{tit}")
+
+# find the element using id and pass the values using send keys
+
 from selenium.webdriver.common.by import By
 driver.find_element(By.ID,"user-name").send_keys("standard_user")
 driver.find_element(By.ID,"password").send_keys("secret_sauce")
 driver.find_element(By.ID,"login-button").click()
 
+# Question-3
+# Storing the page content in the variable name called element
+element = driver.find_element(By.XPATH, "//*[@id='inventory_container']")
 
-#question-3 
-#Storing the page source in page variable
-page = driver.page_source.encode('utf-8')
-# print(page)
+# Get the text content of the element
+page_content = element.text
 
-# # Open a webpage_task_11.txt file in 'wb' mode to write binary data
-file_ = open('webpage_task_11.txt', 'wb')
+# Open the file in 'w' mode to write text data
+file_ = open('webpage_task_11.txt', 'w', encoding='utf-8')
 
-# Write the entire page content
-file_.write(page)
+# Write the text content to the file
+file_.write(page_content)
 
 # Closing the file
 file_.close()
