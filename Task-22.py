@@ -15,15 +15,16 @@ instagram_url="https://www.instagram.com/guviofficial/"
 driver.get(instagram_url)
 time.sleep(3)
 # using XPATH finding the element
-following_count =driver.find_element(By.XPATH,"//header[@class='x1qjc9v5 x78zum5 x1q0g3np x2lah0s x1n2onr6 x1qsaojo xc2v4qs x1xl8k2i x1ez9qw7 x1kcpa7z']//li[3]//button[1]")
-following = following_count.text
+following_element =driver.find_element(By.XPATH,"//header[@class='x1qjc9v5 x78zum5 x1q0g3np x2lah0s x1n2onr6 x1qsaojo xc2v4qs x1xl8k2i x1ez9qw7 x1kcpa7z']//li[3]//button[1]")
+following_count = following_element.text
 #print the following count
-print(f"Following: {following}")
+print(f"Following count of Guvi: {following_count}")
 time.sleep(3)
 # using XPATH finding the element
-follower_count =driver.find_element(By.XPATH,"//header[@class='x1qjc9v5 x78zum5 x1q0g3np x2lah0s x1n2onr6 x1qsaojo xc2v4qs x1xl8k2i x1ez9qw7 x1kcpa7z']//li[2]//button[1]")
-followers = follower_count.text
+followers_element =driver.find_element(By.XPATH,"//header[@class='x1qjc9v5 x78zum5 x1q0g3np x2lah0s x1n2onr6 x1qsaojo xc2v4qs x1xl8k2i x1ez9qw7 x1kcpa7z']//li[2]//button[1]")
+followers_count = followers_element.text
 #print the followers count
-print(f"Followers: {followers}")
-
+print(f"Followers count of Guvi: {followers_count}")
+time.sleep(10)
+driver.quit()
 
