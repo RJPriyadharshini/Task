@@ -1,4 +1,4 @@
-#### TASK20-2 #### 
+#### TASK-20-2 #### 
 import time
 from selenium import webdriver
 from selenium.webdriver.common.by import By
