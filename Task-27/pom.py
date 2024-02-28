@@ -30,10 +30,10 @@ class LoginPage:
                 username = readData(file_path, "Sheet", r, 2)
                 password = readData(file_path, "Sheet", r, 3)
 
-                self.driver.find_element(By.NAME, "username").clear()
+                self.wait.until(EC.presence_of_element_located((By.NAME, "username"))).clear()
                 self.wait.until(EC.visibility_of_element_located((By.NAME, "username"))).send_keys(username)
 
-                self.driver.find_element(By.ID, "password").clear()
+                self.wait.until(EC.presence_of_element_located((By.NAME, "password"))).clear()
                 self.wait.until(EC.visibility_of_element_located((By.NAME, "password"))).send_keys(password)
 
                 login_button = self.wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, ".oxd-button.oxd-button--medium.oxd-button--main.orangehrm-login-button")))
