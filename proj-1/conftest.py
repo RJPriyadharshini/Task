@@ -5,7 +5,7 @@ import pytest
 from webdriver_manager.chrome import ChromeDriverManager
 
 URL = "https://opensource-demo.orangehrmlive.com/web/index.php/auth/login"
-
+  # Setup Chrome driver
 @pytest.fixture
 def browser():
     chrome_options = ChromeOptions()
