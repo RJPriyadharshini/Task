@@ -67,32 +67,24 @@ class OrangeHRM:
 
 #create a function for valid login
     def valid_login(self, username, password):
-        # click the user name and password element and enter pass the values
         self.wait.until(EC.visibility_of_element_located((By.NAME,username_txt))).send_keys(username)
         self.wait.until(EC.visibility_of_element_located((By.NAME,password_txt))).send_keys(password)
-        #click login button
         self.wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR,login_butn))).click()
 
 #create function for invali login
     def invalid_login(self, in_username, in_password):
-        #click the user name and password element and enter pass the values
         self.wait.until(EC.visibility_of_element_located((By.NAME,username_txt))).send_keys(in_username)
-        self.wait.until(EC.visibility_of_element_located((By.NAME,password_txt))).send_keys(in_password)
-        #click login buttun
+        self.wait.until(EC.visibility_of_element_located((By.NAME,password_txt))).send_keys(in_password)   #click login buttun
         self.wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR,login_butn))).click()
 
 #create function for  add employee
     def add_employee(self, firstname, middlename, lastname,oth_id,lie_num,lie_exdate,birth_day,test_txt,comment_txt):
         #click pim module
         self.wait.until(EC.element_to_be_clickable((By.XPATH,pim_module))).click()
-        #click add employee
-        self.wait.until(EC.element_to_be_clickable((By.XPATH,add_butn))).click()
-        #enter first name
-        self.wait.until(EC.visibility_of_element_located((By.NAME,first_name ))).send_keys(firstname)
-        #enter middle name
-        self.wait.until(EC.visibility_of_element_located((By.NAME,middle_name))).send_keys(middlename)
-        #enter last name
-        self.wait.until(EC.visibility_of_element_located((By.NAME,last_name))).send_keys(lastname)
+        self.wait.until(EC.element_to_be_clickable((By.XPATH,add_butn))).click()                 #click add employee
+        self.wait.until(EC.visibility_of_element_located((By.NAME,first_name ))).send_keys(firstname)   #enter first name
+        self.wait.until(EC.visibility_of_element_located((By.NAME,middle_name))).send_keys(middlename)   #enter middle name
+        self.wait.until(EC.visibility_of_element_located((By.NAME,last_name))).send_keys(lastname)       
         #upload image
         self.wait.until(EC.element_to_be_clickable((By.XPATH,image_ele))).click()
         pyautogui.write(file_path)
@@ -101,82 +93,54 @@ class OrangeHRM:
         self.wait.until(EC.element_to_be_clickable((By.XPATH,save_butn))).click()
 
         # enter personal details
-        # enter other id
-        self.wait.until(EC.presence_of_element_located((By.XPATH,other_id))).send_keys(oth_id)
-        # enter driver lisence number
-        self.wait.until(EC.presence_of_element_located((By.XPATH,driver_linum))).send_keys(lie_num)
-
-
-        # enter the lisence expiray date
-        self.wait.until(EC.visibility_of_element_located((By.XPATH,li_expiray_date ))).send_keys(lie_exdate)
-
+        self.wait.until(EC.presence_of_element_located((By.XPATH,other_id))).send_keys(oth_id) # enter other id
+        self.wait.until(EC.presence_of_element_located((By.XPATH,driver_linum))).send_keys(lie_num)  # enter driver lisence number
+        self.wait.until(EC.visibility_of_element_located((By.XPATH,li_expiray_date ))).send_keys(lie_exdate)  # enter the lisence expiray date
         # select nationality
         # sel_marital_status = self.wait.until(EC.element_to_be_clickable((By.XPATH,nationality_ele ))).click()
         # sel_marital_status.select_by_visisble_text("Indian")
-
         # enter maruital status
         # sel_marital_status = self.wait.until(EC.element_to_be_clickable((By.XPATH,marital_status ))).click()
         # sel_marital_status.select_by_visisble_text("signle")
-
-        # enter date of birth
-        self.wait.until(EC.presence_of_element_located((By.XPATH, date_birth))).send_keys(birth_day)
-        # select gender
-        self.wait.until(EC.element_to_be_clickable((By.XPATH, gender_ele))).click()
-        # click save button
-        self.wait.until(EC.element_to_be_clickable((By.XPATH,save_butn1))).click()
-        # custom fields
-
+        self.wait.until(EC.presence_of_element_located((By.XPATH, date_birth))).send_keys(birth_day)   # enter date of birth
+        self.wait.until(EC.element_to_be_clickable((By.XPATH, gender_ele))).click()     # select gender
+        self.wait.until(EC.element_to_be_clickable((By.XPATH,save_butn1))).click()       # click save button    
+ # custom fields  
         # select blood type
         self.wait.until(EC.element_to_be_clickable((By.XPATH,blood_type))).click()
         self.wait.until(EC.element_to_be_clickable((By.XPATH,blood_dropdown))).click()
-        # enter test field
-        self.wait.until(EC.presence_of_element_located((By.XPATH, date_birth))).send_keys(test_txt)
-        # click save button
-        self.wait.until(EC.element_to_be_clickable((By.XPATH,save_butn2))).click()
+        self.wait.until(EC.presence_of_element_located((By.XPATH, date_birth))).send_keys(test_txt)    # enter test field
+        self.wait.until(EC.element_to_be_clickable((By.XPATH,save_butn2))).click()     # click save button
         # attachment field
         self.wait.until(EC.element_to_be_clickable((By.XPATH,add_attachment_butn))).click()
         self.wait.until(EC.element_to_be_clickable((By.XPATH,browse_butn))).click()
         # enter the image file
         pyautogui.write(file_path)
         pyautogui.press('enter')
-        # enter comment
-        self.wait.until(EC.presence_of_element_located((By.XPATH,comment_ele))).send_keys(comment_txt)
+        self.wait.until(EC.presence_of_element_located((By.XPATH,comment_ele))).send_keys(comment_txt) # enter comment
         self.wait.until(EC.element_to_be_clickable((By.XPATH,save_butn3))).click()
 
 #create function for edit the employee
     def edit_employee(self,new_fname,new_lname,new_linum,new_otherid,new_liexp_date):
-        # click pim module
         self.wait.until(EC.element_to_be_clickable((By.XPATH, pim_module))).click()
-        #select the employee for edit
-        self.wait.until(EC.element_to_be_clickable((By.XPATH,selempxpath))).click()
+        self.wait.until(EC.element_to_be_clickable((By.XPATH,selempxpath))).click()   #select the employee for edit
         #edit first name
         update_fname=self.wait.until(EC.visibility_of_element_located((By.XPATH,edit_firstnamepath)))
         update_fname.clear()
         update_fname.send_keys(new_fname)
-
-        #edit last name
-        update_lname=self.wait.until(EC.visibility_of_element_located((By.XPATH, edit_lastnamepath)))
+        update_lname=self.wait.until(EC.visibility_of_element_located((By.XPATH, edit_lastnamepath)))  #edit last name
         update_lname.clear()
         update_fname.send_keys(new_lname)
-
-        #edit other id
-        update_otherid = self.wait.until(EC.visibility_of_element_located((By.XPATH, edit_otherid_path)))
+        update_otherid = self.wait.until(EC.visibility_of_element_located((By.XPATH, edit_otherid_path)))  #edit other id
         update_otherid.clear()
         update_otherid.send_keys(new_otherid)
-
-        #edit diver lisence
-        update_linumber = self.wait.until(EC.visibility_of_element_located((By.XPATH,edit_driverlicense)))
+        update_linumber = self.wait.until(EC.visibility_of_element_located((By.XPATH,edit_driverlicense)))   #edit diver lisence
         update_linumber.clear()
         update_linumber.send_keys(new_linum)
-
-        # edit diver lisence expiry date
-        update_liexp_date = self.wait.until(EC.visibility_of_element_located((By.XPATH, edit_liexpdate_path)))
+        update_liexp_date = self.wait.until(EC.visibility_of_element_located((By.XPATH, edit_liexpdate_path)))   # edit diver lisence expiry date
         update_liexp_date.clear()
         update_liexp_date.send_keys(new_liexp_date)
-
-       #edit gender
         self.wait.until(EC.element_to_be_clickable((By.XPATH, edit_martialclass))).click()
-        #save the new changes
         self.wait.until(EC.element_to_be_clickable((By.XPATH, buttonsavexpath))).click()
 
         # veify first name value
